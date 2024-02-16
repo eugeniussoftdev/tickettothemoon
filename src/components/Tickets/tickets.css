@@ -1,0 +1,29 @@
+.tickets-list-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .tickets-list {
+    overflow-y: scroll;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+      rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    list-style: none;
+    padding-left: 0;
+    text-align: left;
+  }
+  
+  .tickets-list li {
+    padding: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .tickets-list li:hover {
+    background-color: #7fbdec;
+    cursor: pointer;
+}
+
+.tickets-list li.selected {
+      background-color: #cde5f8;
+  }
+  
