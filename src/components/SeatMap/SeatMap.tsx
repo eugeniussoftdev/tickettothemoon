@@ -7,6 +7,7 @@ import React, {
 } from "react";
 
 import { Actions } from "./components/Actions";
+import { seatPerRow } from "../../constants";
 
 import { SeatsType } from "../../utils/seatsGenerator";
 
@@ -87,8 +88,8 @@ export const SeatMap: React.FC<SeatMapProps> = ({
 
   useEffect(() => {
     const filteredSeats = seats.filter((_, i) => {
-      const rectX = (i % 16) * (seatWidth + seatGap);
-      const rectY = Math.floor(i / 16) * (seatHeight + seatGap);
+      const rectX = (i % seatPerRow) * (seatWidth + seatGap);
+      const rectY = Math.floor(i / seatPerRow) * (seatHeight + seatGap);
       const isInViewport =
         rectX >= mapPosition.x &&
         rectY >= mapPosition.y &&
@@ -127,8 +128,8 @@ export const SeatMap: React.FC<SeatMapProps> = ({
         onWheel={(e) => e.preventDefault()}
       >
         {seats.map((seat, i) => {
-          const rectX = (i % 16) * (seatWidth + seatGap);
-          const rectY = Math.floor(i / 16) * (seatHeight + seatGap);
+          const rectX = (i % seatPerRow) * (seatWidth + seatGap);
+          const rectY = Math.floor(i / seatPerRow) * (seatHeight + seatGap);
 
           const isInViewport =
             rectX >= mapPosition.x &&

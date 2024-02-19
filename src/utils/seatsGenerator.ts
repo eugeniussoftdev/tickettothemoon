@@ -1,3 +1,5 @@
+import { seatPerRow } from "../constants";
+
 export type SeatsType = ReturnType<typeof seatsGenerator>;
 
 const zones = ["blue", "green", "red", "black"];
@@ -5,16 +7,19 @@ const zones = ["blue", "green", "red", "black"];
 export const seatsGenerator = () =>
   Array.from({ length: 80 }).map((_, i) => {
     function zoneHelper(position: number) {
-      if (position % 16 < 9 && position % 16 > 4) {
+      if (position % seatPerRow < 9 && position % seatPerRow > 4) {
         return zones[1];
       }
-      if (position % 16 < 13 && position % 16 > 8) {
+      if (position % seatPerRow < 13 && position % seatPerRow > 8) {
         return zones[2];
       }
-      if ((position % 16 < 17 && position % 16 > 12) || position % 16 === 0) {
+      if (
+        (position % seatPerRow < 17 && position % seatPerRow > 12) ||
+        position % seatPerRow === 0
+      ) {
         return zones[3];
       }
-      if (position % 16 < 5) {
+      if (position % seatPerRow < 5) {
         return zones[0];
       }
 
